@@ -10,22 +10,21 @@ class ChatScreen(tk.Frame):
         super().__init__(parent)
 
         self.controller = controller
+        users = f'Users: {0}'
 
         self.chat_box = tk.Text(self, state='disabled')
-        self.chat_box.config(bg='#181818', fg=WHITE)
-        self.chat_box.grid(column=0,row=0, columnspan=2, sticky="ew")
-
         self.entry = tk.Entry(self)
-        self.entry.grid(column=0,row=1, columnspan=2, sticky="ew")
-        self.entry.bind('<Return>', self.send_message)
-        
         self.send_button = tk.Button(self, text="Send", command=self.send_message)
-        self.send_button.config(bg='#181818',fg=LIGHT_FG)
-        self.send_button.grid(column=0, row=2, sticky="ew")
-
-        users = f'Users: {0}'
         self.refresh_button = tk.Label(self, text=users)
+
+        self.entry.bind('<Return>', self.send_message)
+        self.chat_box.config(bg='#181818', fg=WHITE)
+        self.send_button.config(bg='#181818',fg=LIGHT_FG)
         self.refresh_button.config(bg=ACCENT,fg=LIGHT_FG)
+
+        self.chat_box.grid(column=0,row=0, columnspan=2, sticky="ew")
+        self.entry.grid(column=0,row=1, columnspan=2, sticky="ew")
+        self.send_button.grid(column=0, row=2, sticky="ew")
         self.refresh_button.grid(column=1, row=2, sticky="ew")
 
     def send_message(self, event=None):

@@ -1,10 +1,9 @@
-import time
 from os import abort, name
-from flask import Flask, request, jsonify
-from flask_socketio import Namespace, SocketIO
+from flask import Flask
+# from flask_socketio import Namespace, SocketIO
 
 app = Flask(__name__)
-socky = SocketIO(app)
+# socky = SocketIO(app)
 
 messages = []
 users = []

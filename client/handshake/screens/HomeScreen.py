@@ -15,19 +15,24 @@ class HomeScreen(tk.Frame):
 
         self.title = tk.Label(self, text="Welcome to Handshake")
         self.title.config(font=('DM Sans', 20), anchor='center')
-        self.title.grid(row=0, column=0, columnspan=2, sticky=tk.EW)
 
         self.username = tk.Entry(self)
-        self.username.grid(row=1, column=0, columnspan=2, sticky=tk.EW)
-
-        enter_btn = tk.Button(self, text="Enter",
+        
+        self.enter_btn = tk.Button(self, text="Enter",
                             command=self.switch_to_chat_frame)
-        enter_btn.grid(row=2, column=0, columnspan=2, sticky=tk.EW)
 
+
+        # Placing UI Elements
+        self.title.grid(row=0, column=0, columnspan=2, sticky=tk.EW)
+        self.username.grid(row=1, column=0, columnspan=2, sticky=tk.EW)
+        self.enter_btn.grid(row=2, column=0, columnspan=2, sticky=tk.EW)
+
+        # Error Label
         self.error_label = tk.Label(self, textvariable=self.error_msg)
         self.error_label.config(fg='red');
         self.error_label.grid(row=3, column=0, columnspan=2, sticky=tk.EW)
 
+        # Grid Setting
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)
